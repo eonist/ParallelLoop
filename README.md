@@ -34,7 +34,7 @@ let str: String = [0, 1, 2].concurrentReduce("") {
 print(str)
 
 // Atomic value:
-let x: Atomic<Int> = .init(0)
+let x: Atomic<Int> = .init(0) // can be written and read across cores and threads
 DispatchQueue.concurrentPerform(iterations: 1000) { y in
 	x.mutate { $0 += 1 }
 }
