@@ -36,7 +36,7 @@ print(str)
 // Atomic value:
 let x: Atomic<Int> = .init(0)
 DispatchQueue.concurrentPerform(iterations: 1000) { y in
-   x.mutate { $0 += 1 }
+	x.mutate { $0 += 1 }
 }
 print(x.value) // 1000
 
@@ -50,4 +50,5 @@ batches.forEach { batch in // one batch at the time (50 times), avoids cpu admin
 ```
 
 ### Installation:
-- Swift packag manager: `".package(url: "https://github.com/passbook/ParallelLoop.git", .branch("master"))"`
+- Swift packag manager: `.package(url: "https://github.com/passbook/ParallelLoop.git", .branch("master"))`
+- XCode package-manager: search for `ParallelLoop`
