@@ -12,31 +12,31 @@ Bring parallel and functional operations to swift
 ```swift
 // Parallel map
 let result = [0, 1, 2, 3].concurrentMap { i in
-	i * 2
+   i * 2
 }
 print(result) // 0, 2, 4, 6
 
 // Parallel forEach
 [1, 2, 3, 4].concurrentForEach {
-	print($0) // 1,2,3,4
+   print($0) // 1,2,3,4
 }
 
 // Parallel compactMap
 let array = [0, 1, nil, 3].concurrentCompactMap { i in
-	i * 2
+   i * 2
 }
 print(array) // 0, 2, 6
 
 // Parallel reduce
 let str: String = [0, 1, 2].concurrentReduce("") {
-	$0 + "\( $1)"
+   $0 + "\( $1)"
 } // "012"
 print(str)
 
 // Atomic value:
 let x: Atomic<Int> = .init(0) // can be written and read across cores and threads
 DispatchQueue.concurrentPerform(iterations: 1000) { y in
-	x.mutate { $0 += 1 }
+   x.mutate { $0 += 1 }
 }
 print(x.value) // 1000
 
@@ -45,7 +45,7 @@ print(x.value) // 1000
 // The cost of managing threads out way the benefit on big data sets
 let batches = Array(0..<1000).divideBy(by: 20) // try different amounts
 batches.forEach { batch in // one batch at the time (50 times), avoids cpu admin overhead
-	batch.concurrentForEach { $0 } // only assigns 20 operations at the time
+   batch.concurrentForEach { $0 } // only assigns 20 operations at the time
 }
 ```
 
