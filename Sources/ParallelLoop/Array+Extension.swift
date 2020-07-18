@@ -71,9 +71,9 @@ extension Array {
     * - Note: More info on barrier here: https://basememara.com/creating-thread-safe-arrays-in-swift/
     * - Note: Its also possible to do this with NSLock and .sync {} see your concurrent post from 2019
     * ## Examples:
-    * [0, 1, 2, 3]._concurrentMap { i in i * 2 } // 0, 2, 4, 6
+    * [0, 1, 2, 3].concurrentMap2 { i in i * 2 } // 0, 2, 4, 6
     */
-   internal func _concurrentMap<T>(_ transform: (Element) -> T) -> [T] {
+   internal func concurrentMap2<T>(_ transform: (Element) -> T) -> [T] {
       var results = [Int: T]()
       let queue = DispatchQueue(label: "\(Bundle.main.bundleIdentifier!).\(UUID().uuidString)", attributes: .concurrent)
       DispatchQueue.concurrentPerform(iterations: count) { index in
