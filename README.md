@@ -3,7 +3,7 @@
 Bring parallel and functional operations to swift
 
 ### Features:
-- 👯‍♂️Process data in parallel over many cpu-cores and awaits 
+- 👯‍♂️ Process data in parallel over many cpu-cores and awaits 
 - 💜 Functional operations you already know and love 
 - ⚛️ Thread safe values across cpu-cores with AtomicValue 
 - ⏩ Easily stride big data-sets with the array divide operation 
