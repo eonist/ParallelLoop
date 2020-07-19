@@ -25,7 +25,7 @@ public final class Atomic<Value> {
    /**
     * Mutate method that atomically mutates the underlying variable:
     */
-   public func mutate(_ transform: (inout Value) -> ()) {
+   public func mutate(_ transform: (inout Value) -> Void) {
       lock.sync {
          transform(&self._value)
       }

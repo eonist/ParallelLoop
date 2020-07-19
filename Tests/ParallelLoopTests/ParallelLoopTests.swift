@@ -12,7 +12,7 @@ extension ParallelLoopTests {
     */
    fileprivate func testAtomicValue() {
      let x: Atomic<Int> = .init(0)
-     DispatchQueue.concurrentPerform(iterations: 1000) { y in
+     DispatchQueue.concurrentPerform(iterations: 1000) { _ in
          x.mutate { $0 += 1 }
      }
      print(x.value) // 1000
