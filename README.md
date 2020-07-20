@@ -3,10 +3,10 @@
 Bring parallel and functional operations to swift
 
 ### Features:
-- 👯‍♂️ Process data in parallel over many cpu-cores and awaits 
-- 💜 Functional operations you already know and love 
-- ⚛️ Thread safe values across cpu-cores with AtomicValue 
-- ⏩ Easily stride big data-sets with the array divide operation 
+- 👯‍♂️ Process data in parallel over many cpu-cores and awaits
+- 💜 Functional operations you already know and love
+- ⚛️ Thread safe values across cpu-cores with AtomicValue
+- ⏩ Easily stride big data-sets with the array divide operation
 
 ### Examples:
 ```swift
@@ -46,7 +46,7 @@ print(x.value) // 1000
 let batches = Array(0..<1000).divideBy(by: 20) // try different amounts
 batches.forEach { batch in // one batch at the time (50 times), avoids cpu admin overhead
    batch.concurrentForEach { $0 } // only assigns 20 operations at the time
-}
+} // Use .flatMap { $0 } if you need to flatten the result etc
 ```
 
 ### Installation:
