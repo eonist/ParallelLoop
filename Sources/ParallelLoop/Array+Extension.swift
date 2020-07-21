@@ -41,7 +41,13 @@ extension Array {
     * [0, 1, nil, 3].concurrentCompactMap { i in i * 2 } // 0, 2, 6
     */
    public func concurrentCompactMap<T>(transform: @escaping (Element) -> T?) -> [T] {
-      self.concurrentMap(transform: transform).compactMap { $0 }
+      concurrentMap(transform: transform).compactMap { $0 }
+   }
+   /**
+    * Convenience
+    */
+   public func concurrentFlatMap<T>(transform: @escaping (Element) -> T) -> [T.Element] where T : Sequence {
+      concurrentMap(transform: transform).flatMap { $0 }
    }
 }
 /**
@@ -56,7 +62,7 @@ extension Array {
    public func concurrentReduce<T>(_ initValue: T, transform: @escaping (_ acc: T, _ new: Element) -> T) -> T {
       let lock = NSLock() // needed when accessing a variable from many threads
       var initValue = initValue
-      self.concurrentForEach { item in
+      concurrentForEach { item in
          let tempVal = transform(initValue, item) // we have to do the processing outside the lock operation
          lock.lock() // lock.sync {} // probably extend NSlock to make this functionality
          initValue = tempVal // needed when accessing a variable from many threads
@@ -107,6 +113,6 @@ extension Array {
     */
    public func batches(spread: Int) -> [[Element]] {
       let distribution: Int = ParallelLoop.distribution(itemCount: self.count, spread: spread)
-      return self.divideBy(by: distribution)
+      return divideBy(by: distribution)
    }
 }
