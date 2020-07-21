@@ -44,9 +44,16 @@ print(x.value) // 1000
 // We stride to utlize cores better
 // The cost of managing threads out way the benefit on big data sets
 let batches = Array(0..<1000).divideBy(by: 20) // try different amounts
-batches.forEach { batch in // one batch at the time (50 times), avoids cpu admin overhead
-   batch.concurrentForEach { $0 } // only assigns 20 operations at the time
+batches.concurrentForEach { batch in // one batch at the time (50 times), avoids cpu admin overhead
+   batch.forEach { $0 } // only assigns 20 operations at the time
 } // Use .flatMap { $0 } if you need to flatten the result etc
+
+// or even easier:
+// The batches method also ensures a good distribution for big and small data sets
+// great when the data-set count varies
+Array(0..<1000).batches(spread: 20).concurrentForEach { batch in
+   batch.forEach { $0 }
+}
 ```
 
 ### Installation:
