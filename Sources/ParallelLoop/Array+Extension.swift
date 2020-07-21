@@ -94,10 +94,19 @@ extension Array {
     * ## Examples:
     * let batches = Array(0..<1000).divideBy(by: 20) // batches now have 50 items
     * batches.forEach { batch in batch.concurrentForEach { $0 } }
+    * - Fixme: ⚠️️ rename to divide(by:)
     */
    public func divideBy(by size: Int) -> [[Element]] {
       stride(from: 0, to: self.count, by: size).map {
          Array(self[$0..<Swift.min($0 + size, self.count)])
       }
+   }
+   /**
+    * Returns batches for spread
+    * - Parameter spread: number of threads to use
+    */
+   public func batchs(spread: Int) -> [[Element]] {
+      let distribution: Int = ParallelLoop.distribution(itemCount: self.count, spread: spread)
+      return self.divideBy(by: distribution)
    }
 }
