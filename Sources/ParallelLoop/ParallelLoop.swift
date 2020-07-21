@@ -9,8 +9,9 @@ public final class ParallelLoop {
     * - Note: A good spread is around 10-20 or you can try: ProcessInfo().activeProcessorCount
     * distribution(itemCount: 200, spread: 10) // 20
     * distribution(itemCount: 10, spread: 10) // 1
-    * - Parameter itemCount: num of items in big data set
-    * - Parameter spread: number of threads to use
+    * - Parameters:
+    *   - itemCount: num of items in big data set
+    *   - spread: number of threads to use
     */
    public static func distribution(itemCount: Int, spread: Int) -> Int {
       max(Int(floor(Double(itemCount / spread))), 1)
