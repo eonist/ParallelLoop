@@ -105,7 +105,7 @@ extension Array {
     * Returns batches for spread
     * - Parameter spread: number of threads to use
     */
-   public func batchs(spread: Int) -> [[Element]] {
+   public func batches(spread: Int) -> [[Element]] {
       let distribution: Int = ParallelLoop.distribution(itemCount: self.count, spread: spread)
       return self.divideBy(by: distribution)
    }
