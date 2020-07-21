@@ -46,7 +46,7 @@ extension Array {
    /**
     * Convenience
     */
-   public func concurrentFlatMap<T>(transform: @escaping (Element) -> T) -> [T.Element] where T : Sequence {
+   public func concurrentFlatMap<T>(transform: @escaping (Element) -> T) -> [T.Element] where T: Sequence {
       concurrentMap(transform: transform).flatMap { $0 }
    }
 }
