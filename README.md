@@ -54,6 +54,11 @@ batches.concurrentForEach { batch in // one batch at the time (50 times), avoids
 Array(0..<1000).batches(spread: 20).concurrentForEach { batch in
    batch.forEach { $0 }
 }
+
+// Another example using flatMap:
+let values: [Int] = Array(0..<1000).batches(spread: 20).concurrentFlatMap { batch in
+   batch.forEach { $0 }
+}
 ```
 
 ### Installation:
