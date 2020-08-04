@@ -109,9 +109,10 @@ extension Array {
    }
    /**
     * Returns batches for spread
-    * - Parameter spread: number of threads to use
+    * - Note: the purpouse is for instance if you have 250 items, and 10 threads, you can then start 10 lanes with 25 items in each
+    * - Parameter spread: number of threads to use (default is the num of thrads available on your device)
     */
-   public func batches(spread: Int) -> [[Element]] {
+   public func batches(spread: Int = ProcessInfo().activeProcessorCount) -> [[Element]] {
       let distribution: Int = ParallelLoop.distribution(itemCount: self.count, spread: spread)
       return divideBy(by: distribution)
    }
