@@ -7,6 +7,7 @@ Bring parallel and functional operations to swift
 - 💜 Functional operations you already know and love
 - ⚛️ Thread safe values across cpu-cores with AtomicValue
 - ⏩ Easily stride big data-sets with the array divide operation
+- 🎚Toggle concurrency on / off 
 
 ### Examples:
 ```swift

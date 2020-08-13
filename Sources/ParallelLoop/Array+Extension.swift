@@ -117,3 +117,33 @@ extension Array {
       return divideBy(by: distribution)
    }
 }
+/**
+ * A way to toggle concurrency off
+ */
+extension Array {
+   /**
+    * concurrentMap or map (concurrent or serial)
+    */
+   @discardableResult
+   public func concurrentMap<T>(parallel: Bool, transform: @escaping (Element) -> T) -> [T] {
+      parallel ? concurrentMap(transform: transform) : map(transform)
+   }
+   /**
+    * concurrentCompactMap or compactMap (concurrent or serial)
+    */
+   public func concurrentCompactMap<T>(parallel: Bool, transform: @escaping (Element) -> T?) -> [T] {
+      parallel ? concurrentCompactMap(transform: transform) : compactMap(transform)
+   }
+   /**
+    * (concurrent or serial)
+    */
+   public func concurrentForEach(parallel: Bool, transform: @escaping (Element) -> Void) {
+      parallel ? concurrentForEach(transform: transform) : forEach(transform)
+   }
+   /**
+    * (concurrent or serial)
+    */
+   public func concurrentFlatMap<T>(parallel: Bool, transform: @escaping (Element) -> T) -> [T.Element] where T: Sequence {
+      parallel ? concurrentFlatMap(transform: transform) : flatMap(transform)
+   }
+}
