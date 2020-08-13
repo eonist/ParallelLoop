@@ -1,3 +1,5 @@
+![Tests](https://github.com/light-stream/ParallelLoop/workflows/Tests/badge.svg)
+
 # ParallelLoop 💞
 
 Bring parallel and functional operations to swift
