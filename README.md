@@ -2,7 +2,7 @@
 
 # ParallelLoop 💞
 
-Bring parallel and functional operations to swift
+> Parallel + functional operations in swift
 
 ### Features:
 - 👯‍♂️ Process data in parallel over many cpu-cores and awaits
