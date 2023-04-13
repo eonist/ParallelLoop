@@ -1,4 +1,5 @@
 ![Tests](https://github.com/light-stream/ParallelLoop/workflows/Tests/badge.svg)
+[![codebeat badge](https://codebeat.co/badges/f8a6bae6-963e-4589-9b72-d451356b733d)](https://codebeat.co/projects/github-com-eonist-parallelloop-master)
 
 # ParallelLoop 💞
 
